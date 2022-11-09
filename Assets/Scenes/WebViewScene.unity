@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc0ffd214815d246a308ebecc50268a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FbStatus: 0
 --- !u!1 &187344552
 GameObject:
   m_ObjectHideFlags: 0

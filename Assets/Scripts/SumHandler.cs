@@ -6,7 +6,7 @@ using UnityEngine;
 public class SumHandler : MonoBehaviour
 {
     [SerializeField]
-    private int _sum;
+    public int Sum { get; private set; }
     [Header("Sum Display")]
     [SerializeField]
     private TMP_Text _sumText;
@@ -35,9 +35,9 @@ public class SumHandler : MonoBehaviour
 
     private void OnSumBetChanged(int _bet)
     {
-        if(_sum >= _bet)
+        if(Sum >= _bet)
         {
-            _sum -= _bet;
+            Sum -= _bet;
             SaveSum();
             SetSumText();
         }
@@ -47,11 +47,11 @@ public class SumHandler : MonoBehaviour
     {
         if(ResultsHandler.isTeam1 == true)
         {
-            _sum += (int)ResultsHandler.betTeam1;
+            Sum += (int)ResultsHandler.betTeam1;
         }
         else
         {
-            _sum += (int)ResultsHandler.betTeam2;
+            Sum += (int)ResultsHandler.betTeam2;
         }
         SaveSum();
         SetSumText();
@@ -59,14 +59,21 @@ public class SumHandler : MonoBehaviour
 
     private void SetSumText()
     {
-        _sum = PlayerPrefs.GetInt("Sum");
+        Sum = PlayerPrefs.GetInt("Sum");
         
-        _sumText.SetText("Your balance: " + _sum.ToString());
-        _newSumText.SetText("Your balance: " + _sum.ToString());
+        _sumText.SetText("Your balance: " + Sum.ToString());
+        _newSumText.SetText("Your balance: " + Sum.ToString());
     }
 
     private void SaveSum()
     {
-        PlayerPrefs.SetInt("Sum", _sum);
+        PlayerPrefs.SetInt("Sum", Sum);
+    }
+
+    public void SumCredit()
+    {
+        Sum += 50;
+        SaveSum();
+        SetSumText();
     }
 }

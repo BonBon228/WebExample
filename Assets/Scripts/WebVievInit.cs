@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class WebVievInit : MonoBehaviour
 {
+    public FirebaseInit Initializer;
     string Url, brandDevice;
     public bool simDevice;
     
@@ -73,7 +74,7 @@ public class WebVievInit : MonoBehaviour
         Url = PlayerPrefs.GetString("key", "");
         if(Url == "")
         {
-            FirstStart();
+            StartCoroutine(FirstStart());
         }
         else
         {
@@ -82,17 +83,23 @@ public class WebVievInit : MonoBehaviour
         
         //StartCoroutine(StartProgram());
     }
-    private void FirstStart()
+    IEnumerator FirstStart()
     {
-        Url = FirebaseRemoteConfig.DefaultInstance.GetValue("url").StringValue;
-        if (Url != "")
+        while (Initializer.FbStatus == FirebaseInit.FirebaseStatus.Waiting)
         {
-            PlayerPrefs.SetString("key", Url);
+            yield return new WaitForSeconds(0.1f);
+            Debug.Log("Waiting");
+        }
+        if (Initializer.FbStatus == FirebaseInit.FirebaseStatus.Connected)
+        {
+            Url = FirebaseRemoteConfig.DefaultInstance.GetValue("url").StringValue;
+            if (Url != "")
+                PlayerPrefs.SetString("key", Url);
         }
         LoadFire();
     }
     
-    private void LoadFire()
+    public void LoadFire()
     {
         //Url = FirebaseRemoteConfig.DefaultInstance.GetValue("url").StringValue;
         brandDevice = SystemInfo.deviceModel.ToLower();
@@ -105,11 +112,11 @@ public class WebVievInit : MonoBehaviour
         StartCoroutine(StartWebPage());
     }
 
-    private void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
-    private bool GetSimStatus()
+    bool GetSimStatus()
     {
         int sim = PluginInstance.Call<int>("getSimStatus", UnityActivity);
         if (sim == 1)

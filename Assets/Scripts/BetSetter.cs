@@ -24,20 +24,34 @@ public class BetSetter : MonoBehaviour
     public void OnSetBetTeam1ButtonClick()
     {
         bet1 = int.Parse(_inputBet1.text);
-        _setBetTeam1.GetComponent<Button>().interactable = false;
-        if(SumBetChanged != null)
+        if(FindObjectOfType<SumHandler>().Sum >= bet1)
         {
-            SumBetChanged(bet1);
+            _setBetTeam1.GetComponent<Button>().interactable = false;
+            if(SumBetChanged != null)
+            {
+                SumBetChanged(bet1);
+            }
+        }
+        else
+        {
+            bet1 = 0;
         }
     }
 
     public void OnSetBetTeam2ButtonClick()
     {
         bet2 = int.Parse(_inputBet2.text);
-        _setBetTeam2.GetComponent<Button>().interactable = false;
-        if(SumBetChanged != null)
+        if(FindObjectOfType<SumHandler>().Sum >= bet2)
         {
-            SumBetChanged(bet2);
+            _setBetTeam2.GetComponent<Button>().interactable = false;
+            if(SumBetChanged != null)
+            {
+                SumBetChanged(bet2);
+            }
+        }
+        else
+        {
+            bet2 = 0;
         }
     }
 }

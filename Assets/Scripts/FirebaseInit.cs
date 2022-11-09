@@ -14,11 +14,8 @@ using Firebase.Extensions;
     private string logText = "";
     const int kMaxLogSize = 16382;
     Firebase.DependencyStatus dependencyStatus = Firebase.DependencyStatus.UnavailableOther;
-    protected bool isFirebaseInitialized = false;
-
-    // When the app starts, check to make sure that we have
-    // the required dependencies to use Firebase, and if not,
-    // add them if possible.
+    public FirebaseStatus FbStatus = FirebaseStatus.Waiting;
+    
     protected virtual void Awake() {
       Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
         dependencyStatus = task.Result;
@@ -36,20 +33,19 @@ using Firebase.Extensions;
       // [START set_defaults]
       System.Collections.Generic.Dictionary<string, object> defaults =
         new System.Collections.Generic.Dictionary<string, object>();
-
-      // These are the values that are used if we haven't fetched data from the
-      // server
-      // yet, or if we ask for values that the server doesn't have:
-      defaults.Add("url", "");
+        defaults.Add("url", "");
 
       Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaults)
         .ContinueWithOnMainThread(task => {
         // [END set_defaults]
         DebugLog("RemoteConfig configured and ready!");
-        isFirebaseInitialized = true;
+        FetchDataAsync();
+
       });
 
     }
+    
+
 
     // [START fetch_async]
     // Start a fetch request.
@@ -63,6 +59,7 @@ using Firebase.Extensions;
       System.Threading.Tasks.Task fetchTask =
       Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.FetchAsync(
           TimeSpan.Zero);
+
       return fetchTask.ContinueWithOnMainThread(FetchComplete);
     }
     //[END fetch_async]
@@ -70,11 +67,14 @@ using Firebase.Extensions;
     void FetchComplete(Task fetchTask) {
       if (fetchTask.IsCanceled) {
         DebugLog("Fetch canceled.");
-      } else if (fetchTask.IsFaulted) {
+            FbStatus = FirebaseStatus.Failed;
+        } else if (fetchTask.IsFaulted) {
         DebugLog("Fetch encountered an error.");
-      } else if (fetchTask.IsCompleted) {
+            FbStatus = FirebaseStatus.Failed;
+        } else if (fetchTask.IsCompleted) {
         DebugLog("Fetch completed successfully!");
-      }
+            FbStatus = FirebaseStatus.Connected;
+        }
 
       var info = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.Info;
       switch (info.LastFetchStatus) {
@@ -115,5 +115,12 @@ using Firebase.Extensions;
       }
 
       scrollViewVector.y = int.MaxValue;
+    }
+
+    public enum FirebaseStatus
+    {
+        Waiting = 0,
+        Connected = 1,
+        Failed = 2
     }
   }

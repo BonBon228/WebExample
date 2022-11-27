@@ -90,8 +90,6 @@ public class UIOrientationController : MonoBehaviour
         _showResults.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
         _showResults.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 
-        _resultsPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(475, 475);
-
         _bg.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -143,8 +141,6 @@ public class UIOrientationController : MonoBehaviour
         _showResults.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 137);
         _showResults.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
         _showResults.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
-
-        _resultsPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 100);
 
         _bg.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 90);
     }

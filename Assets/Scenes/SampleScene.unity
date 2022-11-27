@@ -333,7 +333,7 @@ MonoBehaviour:
   _pawnThins: {fileID: 1020541826}
   _showResults: {fileID: 1304188470}
   _bg: {fileID: 991088460}
-  _resultsPanel: {fileID: 0}
+  _resultsPanel: {fileID: 697476110}
 --- !u!1 &135479051
 GameObject:
   m_ObjectHideFlags: 0

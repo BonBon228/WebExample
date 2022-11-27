@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1024195866044",
+    "project_id": "nursity-2c55c",
+    "storage_bucket": "nursity-2c55c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024195866044:android:9dce2358c540d336774fb9",
+        "android_client_info": {
+          "package_name": "betsity.evilane.betcity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024195866044-ekufqc5finlqeq0vh1i917i8jqrdrjpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBESioXuBB6rCynzeZCEma0S30sS-yQHcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024195866044-ekufqc5finlqeq0vh1i917i8jqrdrjpl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -334,7 +334,6 @@ MonoBehaviour:
   _showResults: {fileID: 1304188470}
   _bg: {fileID: 991088460}
   _resultsPanel: {fileID: 0}
-  _newSumText: {fileID: 0}
 --- !u!1 &135479051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697476111
 RectTransform:
   m_ObjectHideFlags: 0

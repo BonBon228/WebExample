@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "371470418980",
-    "project_id": "example-e61e9",
-    "storage_bucket": "example-e61e9.appspot.com"
+    "project_number": "1024195866044",
+    "project_id": "nursity-2c55c",
+    "storage_bucket": "nursity-2c55c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:371470418980:android:ef621ec8c05f82844f84b1",
+        "mobilesdk_app_id": "1:1024195866044:android:9dce2358c540d336774fb9",
         "android_client_info": {
-          "package_name": "com.DefaultCompany.Example"
+          "package_name": "betsity.evilane.betcity"
         }
       },
       "oauth_client": [
         {
-          "client_id": "371470418980-p4jmo0ph4pm8c66e61r1g1qrhs9e96sg.apps.googleusercontent.com",
+          "client_id": "1024195866044-ekufqc5finlqeq0vh1i917i8jqrdrjpl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAKnY3mbEF8hZWZhiDeFWVQMbbLgyWdPiI"
+          "current_key": "AIzaSyBESioXuBB6rCynzeZCEma0S30sS-yQHcc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "371470418980-p4jmo0ph4pm8c66e61r1g1qrhs9e96sg.apps.googleusercontent.com",
+              "client_id": "1024195866044-ekufqc5finlqeq0vh1i917i8jqrdrjpl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -14,7 +14,11 @@
     <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-config-unity/10.0.1/firebase-config-unity-10.0.1.pom</file>
   </files>
   <settings>
+<<<<<<< Updated upstream
     <setting name="androidAbis" value="armeabi-v7a" />
+=======
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
+>>>>>>> Stashed changes
     <setting name="bundleId" value="betsity.evilane.betcity" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />

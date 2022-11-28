@@ -12,7 +12,8 @@ public class WebVievInit : MonoBehaviour
     public FirebaseInit Initializer;
     string Url, brandDevice;
     public bool simDevice;
-    
+    Text status;
+
     Firebase.DependencyStatus dependencyStatus = Firebase.DependencyStatus.UnavailableOther;
 
     //WebView Component
@@ -123,6 +124,18 @@ public class WebVievInit : MonoBehaviour
             return true;
         return false;
     }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            if(webViewObject.CanGoBack())
+            {
+                webViewObject.GoBack();
+            }
+        }
+    }
+
     IEnumerator StartWebPage()
     {
         webViewObject = (new GameObject("WebViewObject")).AddComponent<WebViewObject>();
@@ -130,14 +143,20 @@ public class WebVievInit : MonoBehaviour
             cb: (msg) =>
             {
                 Debug.Log(string.Format("CallFromJS[{0}]", msg));
+                status.text = msg;
+                status.GetComponent<Animation>().Play();
             },
             err: (msg) =>
             {
                 Debug.Log(string.Format("CallOnError[{0}]", msg));
+                status.text = msg;
+                status.GetComponent<Animation>().Play();
             },
             httpErr: (msg) =>
             {
                 Debug.Log(string.Format("CallOnHttpError[{0}]", msg));
+                status.text = msg;
+                status.GetComponent<Animation>().Play();
             },
             started: (msg) =>
             {

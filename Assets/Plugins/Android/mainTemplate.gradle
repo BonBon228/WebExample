@@ -17,6 +17,7 @@ apply plugin: 'com.android.library'
 **APPLY_PLUGINS**
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
     implementation 'com.google.android.gms:play-services-base:18.1.0' // Assets/Firebase/Editor/AppDependencies.xml:17
@@ -31,7 +32,6 @@ dependencies {
 // Android Resolver Exclusions Start
 android {
   packagingOptions {
-      exclude ('/lib/arm64-v8a/*' + '*')
       exclude ('/lib/armeabi/*' + '*')
       exclude ('/lib/mips/*' + '*')
       exclude ('/lib/mips64/*' + '*')

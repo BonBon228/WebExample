@@ -61,8 +61,8 @@ public class SumHandler : MonoBehaviour
     {
         Sum = PlayerPrefs.GetInt("Sum");
         
-        _sumText.SetText("Your balance: " + Sum.ToString());
-        _newSumText.SetText("Your balance: " + Sum.ToString());
+        _sumText.SetText("Coins: " + Sum.ToString());
+        _newSumText.SetText("Coins: " + Sum.ToString());
     }
 
     private void SaveSum()

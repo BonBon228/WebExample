@@ -25,6 +25,7 @@ public class UIOrientationController : MonoBehaviour
     [SerializeField] private TMP_Text _sumText;
     [SerializeField] private Button _pawnThins;
     [SerializeField] private Button _showResults;
+    [SerializeField] private GameObject _resultsPanel;
     [SerializeField] private GameObject _bg;
 
     private void Update()
@@ -89,7 +90,7 @@ public class UIOrientationController : MonoBehaviour
         _showResults.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
         _showResults.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 
-        _bg.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
+        _resultsPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(2200, 1300);
     }
 
     private void PortraitOrientated()
@@ -141,6 +142,6 @@ public class UIOrientationController : MonoBehaviour
         _showResults.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
         _showResults.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 
-        _bg.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 90);
+        _resultsPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(1300, 2200);
     }
 }
